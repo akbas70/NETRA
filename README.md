@@ -29,7 +29,7 @@ Setup Steps
 Bash
 
 # Clone the NETRA repository
-git clone https://github.com/YourUsername/Netra.git
+https://github.com/akbas70/NETRA.git
 cd Netra
 
 Usage
