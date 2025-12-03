@@ -9,3 +9,11 @@ def get_mac(ip):
                 return parts[2]  # MAC
     except:
         return None
+
+def scan_arp(ips):
+    results = {}
+    for ip in ips:
+        mac = get_mac(ip)
+        results[ip] = mac
+    return results
+
