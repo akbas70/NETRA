@@ -38,7 +38,7 @@ Usage
 Run the main application file using elevated privileges and follow the interactive menu prompts:
 Bash
 
-sudo python netra.py
+sudo python netra.py [command]
 
 📜 MIT License & Legal Disclaimer
 
