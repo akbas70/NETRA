@@ -29,7 +29,8 @@ Setup Steps
 Bash
 
 # Clone the NETRA repository
-https://github.com/akbas70/NETRA.git
+git clone https://github.com/akbas70/NETRA.git
+pip3 install scapy
 cd Netra
 
 Usage
