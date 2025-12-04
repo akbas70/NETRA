@@ -23,7 +23,6 @@ import atexit
 #coder: nexucy19/akbas70
 
 def print_logo():
-    """In logo và thông tin cơ bản khi khởi động."""
     logo = """
     
 
