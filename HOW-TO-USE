@@ -1,0 +1,36 @@
+### 📝 How to Use NETRA
+
+NETRA is a command-line interface (CLI) tool. All commands follow the structure: `python3 netra.py <command> <options>`. Remember that most wireless functions require **Root privileges (sudo)**.
+
+---
+
+#### 1. SCAN Mode: Network Reconnaissance
+
+Use the `scan` command for multi-threaded port scanning, banner grabbing, and device fingerprinting.
+
+| Command Syntax | Purpose | Example |
+| :--- | :--- | :--- |
+| `python3 netra.py scan -t <IP>` | Basic scan of default ports. | `python3 netra.py scan -t 192.168.1.1` |
+| `sudo python3 netra.py scan -t <IP> -i <IFACE>` | Full scan with MAC/Vendor discovery (Recommended). | `sudo python3 netra.py scan -t 10.0.0.5 -i eth0` |
+| `python3 netra.py scan -t <IP> --ports <LIST>` | Scan a custom range/list of ports. | `python3 netra.py scan -t 10.1.1.20 --ports 21,80,443,1000-2000` |
+
+---
+
+#### 2. WIRELESS Mode: Attack & Utilities (Requires SUDO)
+
+These commands interact directly with your Wi-Fi interface and require Monitor Mode for advanced functions.
+
+| Command Syntax | Purpose | Notes |
+| :--- | :--- | :--- |
+| `sudo python3 netra.py wireless netscan -i <IFACE>` | Performs an ARP scan of the local network. | |
+| `sudo python3 netra.py wireless deauth -i <MON_IF> -t <CLIENT_MAC> -g <AP_MAC>` | Sends Deauth packets to disconnect a client. | Use `-t FF:FF:FF:FF:FF:FF` for broadcast. |
+| `sudo python3 netra.py wireless fake-ap -i <MON_IF> --ssid <NAME> -ch <CH>` | Creates a Rogue AP (Requires `airbase-ng`). **Interface auto-cleanup on exit.** | Press `Ctrl+C` to stop the AP. |
+
+---
+
+#### 3. UTILS Mode: System Utilities
+
+| Command Syntax | Purpose | Example |
+| :--- | :--- | :--- |
+| `sudo python3 netra.py utils mac-change -i <IFACE>` | Changes interface MAC to a random address. | `sudo python3 netra.py utils mac-change -i wlan0` |
+| `python3 netra.py utils links` | Displays helpful external resources and links. | |
