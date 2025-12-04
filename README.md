@@ -1,48 +1,59 @@
-# NETRA
-NETRA: The concise Network Intelligence and Auditing Tool. Multi-functional utility suite for deep-dive network discovery, OUI analysis, and port scanning.
+# 📡 NETRA - Network Recon and Auditing Toolkit
 
+**NETRA (Network Recon and Auditing Toolkit)** is a high-performance, multi-functional utility suite designed for deep network discovery, security auditing, and wireless analysis on local area networks (LANs) and Wi-Fi environments.
 
-NETRA (Network Intelligence and Auditing Tool) is a lightweight, multi-functional utility suite designed for deep network analysis, discovery, and security auditing of local area networks (LANs) and Wi-Fi environments.
+This multi-tool efficiently consolidates the core functionalities of several network utilities into a single, optimized **Command Line Interface (CLI)** application. It is built using Python, Scapy, and multi-threading for fast, reliable, and low-level network interactions.
 
-This multi-tool gathers the core functionalities of several complex network utilities into a single, efficient Command Line Interface (CLI) application. NETRA is optimized to run on Linux/Unix environments and is not intended for Windows users, due to its requirement for low-level packet access.
+---
 
-🛠️ Key Features
+## 🛠️ Key Features
 
-Functionality	Description
-🌐 Host Discovery	Fast ARP and Ping scanning to quickly map active hosts (IP, MAC) on the local network segment.
-🆔 OUI/Vendor Lookup	Analyzes the MAC Address of discovered devices to accurately identify the Manufacturer (Vendor).
-🛡️ Port Scanning	Checks common TCP/UDP ports to determine which services are running on target hosts.
-📶 Wi-Fi Audit & Analysis	Gathers information on surrounding Wi-Fi networks (SSID, signal strength, channel) for security auditing.
+| Functionality | Description | Technical Note |
+| :--- | :--- | :--- |
+| **🌐 Host Discovery** | Fast ARP and Ping scanning to quickly map active hosts (IP, MAC) on the local network segment. | Utilizes **Scapy's low-level packet crafting** for efficiency. |
+| **⚡ Optimized Port Scanning** | Checks common TCP/UDP ports to determine running services and capture banners. | Employs **Multi-threading** (`ThreadPoolExecutor`) for **high-speed, concurrent port checks**. |
+| **🆔 OUI/Vendor Lookup** | Analyzes the MAC Address of discovered devices to accurately identify the Manufacturer (Vendor). | Requires an `oui.txt` file for local, offline lookup. |
+| **🛡️ Wi-Fi Auditing & Stress Testing** | Advanced tools for interface mode management, network reconnaissance, and **testing resilience against deauthentication** attacks and rogue access points. | Requires root privileges and interface must be in **Monitor Mode** for many functions. |
 
-🚀 Installation and Setup
+---
 
-Prerequisites
+## 🚀 Installation and Setup
 
-    Python 3.x
+### Prerequisites
 
-    Linux/Unix Operating System (Required for low-level network access).
+* **Python 3.x**
+* **Linux/Unix Operating System** (Required for low-level network access and Scapy integration).
+* **Root/Administrator Privileges** (Required for ARP scanning, Wi-Fi auditing, and interface manipulation).
 
-    Root/Administrator Privileges (Required for most scanning functions).
+### Setup Steps
 
-Setup Steps
-
-Bash
-
+```bash
 # Clone the NETRA repository
-git clone https://github.com/akbas70/NETRA.git
+git clone [https://github.com/akbas70/NETRA.git](https://github.com/akbas70/NETRA.git)
+cd NETRA
+
+# Install required libraries, including Scapy
 pip3 install scapy
-cd Netra
+
+# Get the OUI database for vendor lookup (optional, but recommended)
+# You may need to manually place or update an 'oui.txt' file.
 
 Usage
 
-Run the main application file using elevated privileges and follow the interactive menu prompts:
+Run the main application file using elevated privileges and specify the command:
 Bash
 
-sudo python netra.py [command]
+sudo python netra.py [command] -h
+
+Example Usage:
+
+    Port Scan: sudo python netra.py scan -t 192.168.1.1 --ports 1-1000
+
+    ARP Scan: sudo python netra.py wireless netscan -i eth0 -r 192.168.1.0/24
 
 📜 MIT License & Legal Disclaimer
 
-⚠️ LEGAL DISCLAIMER AND USAGE RESTRICTIONS
+⚠️ LEGAL DISCLAIMER AND RESPONSIBLE USAGE
 
 NETRA IS PROVIDED STRICTLY FOR EDUCATIONAL PURPOSES, PERSONAL LEARNING, AND LEGITIMATE NETWORK SECURITY AUDITING.
 
@@ -50,6 +61,4 @@ The authors and contributors of NETRA DO NOT promote or condone any illegal or m
 
     You will only run the tool on networks you own and manage, or on networks where you have explicit, written authorization from the owner.
 
-    The authors are NOT LIABLE for any misuse or damage caused by the use of this software.
-
-This project is licensed under the MIT License. The full text of the license can be found in the LICENSE file in this repository.
+    The advanced wireless tools are designed to test the security and configuration resilience of your own network infrastructure.
